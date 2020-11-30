@@ -1,10 +1,19 @@
 import React from "react"
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+
+// Pages
+import VotedMovies from './movies/VotedMovies'
 
 const App = () => {
 
   return (
     <React.Fragment>
-      <h1>Hello!</h1>
+    <VotedMovies />
+      <Router>
+        <Switch>
+          <Route path = '/allmovies' render={ <VotedMovies /> } />
+        </Switch>
+      </Router>
     </React.Fragment>
   );
 }
