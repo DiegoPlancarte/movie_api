@@ -3,6 +3,8 @@ import useSearch from '../hooks/useSearch';
 import useCreate from '../hooks/useCreate';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, CardColumns, Card } from 'react-bootstrap';
+import { IconContext } from "react-icons";
+import { BiCameraMovie } from 'react-icons/bi';
 
 const SearchResults = (props) => {
 
@@ -11,10 +13,17 @@ const SearchResults = (props) => {
 
   if (moviesLoading) {
     return (
-      <div>
-        <h1>Loading...</h1>
-      </div>
-    )
+      <Container>
+        <div style={{textAlign: "center"}}>
+          <div>
+            <IconContext.Provider value={{ size: '5em', color: '#3498db'}}>
+              <BiCameraMovie/>
+            </IconContext.Provider>
+            <h1 className="text-info">Loading...</h1>
+          </div>
+        </div>
+      </Container>
+      )
   }
 
   return (
