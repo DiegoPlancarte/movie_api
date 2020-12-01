@@ -4,6 +4,8 @@ import useRead from '../hooks/useRead'
 import useCreate from '../hooks/useCreate'
 import useUpdate from '../hooks/useUpdate'
 import { Container, Row, Col, Button, Tabs, Tab } from 'react-bootstrap'
+import { IconContext } from "react-icons";
+import { FaRegThumbsUp, FaRegThumbsDown } from "react-icons/fa";
 
 const MovieInfo = (props) => {
 
@@ -57,10 +59,34 @@ const MovieInfo = (props) => {
           />
         </Col>
         <Col>
-          {exists && <p>{movie.thumbs_up}</p>}
-          <Button onClick={handleUpVote}>Up Vote</Button>
-          {exists && <p>{movie.thumbs_down}</p>}
-          <Button onClick={handleDownVote}>Down Vote</Button>
+          <IconContext.Provider value={{ size: "1.5em" }}>
+            <div>
+              <Button className='vote-button' onClick={handleUpVote}>
+                <Row xs={2}>
+                  <Col>
+                  {exists && <span>{movie.thumbs_up}</span>}
+                  </Col>
+                  <Col>
+                  <FaRegThumbsUp/>
+                  </Col>
+                </Row>
+              </Button>
+            </div>
+          </IconContext.Provider>
+          <IconContext.Provider value={{ size: "1.5em" }}>
+            <div>
+              <Button className='vote-button' onClick={handleDownVote}>
+                <Row xs={2}>
+                  <Col>
+                  {exists && <span>{movie.thumbs_down}</span>}
+                  </Col>
+                  <Col>
+                  <FaRegThumbsDown/>
+                  </Col>
+                </Row>
+              </Button>
+            </div>
+          </IconContext.Provider>
         </Col>
       </Row>
       <Tabs
