@@ -23,24 +23,25 @@ const SearchMovie = () => {
   return ( 
     <React.Fragment>
       <Container>
-          <Form>
-            <Form.Group controlId="title">
-              <Form.Label >Search Movies</Form.Label>
-              <Form.Control
-                type="text" 
-                name="title" 
-                value={ title.title || '' } 
-                onChange={ handleInputChange } 
-                placeholder="Enter title" />
-            </Form.Group>
-            <Button type='submit' onClick={handleSubmit}>Search</Button>
-            { redirect && (
-              <Redirect to={{ 
-                pathname: '/searchresults',
-                state: {title: title.title}
-              }} />
-            )}
-          </Form>
+        <Form>
+          <Form.Group controlId="title">
+            <Form.Label >Search Movies</Form.Label>
+            <Form.Control
+              type="text" 
+              name="title" 
+              value={ title.title || '' } 
+              onChange={ handleInputChange } 
+              placeholder="Enter title" />
+          </Form.Group>
+          <Button type='submit' onClick={handleSubmit}>Search</Button>
+          { redirect && (
+            <Redirect to={{ 
+              pathname: '/searchresults',
+              state: {title: title.title}
+            }} />
+          )}
+        </Form>
+        <p className='text-center font-italic'>Powered by the IMDb API</p>
       </Container>
     </React.Fragment>
   );
