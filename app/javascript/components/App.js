@@ -6,6 +6,7 @@ import SearchMovie from "./movies/SearchMovie"
 import VotedMovies from "./movies/VotedMovies"
 import MovieInfo from "./movies/MovieInfo"
 import SearchResults from "./movies/SearchResults"
+import TopBar from "./TopBar"
 
 const App = (props) => {
 
@@ -14,6 +15,7 @@ const App = (props) => {
   return (
     <React.Fragment>
       <Router>
+        <TopBar/>
 
         <Switch>
           <Route exact path='/' render={(props) => <SearchMovie {...props} /> }/>
