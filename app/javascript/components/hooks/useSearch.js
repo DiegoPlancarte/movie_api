@@ -16,8 +16,9 @@ const useSearch = ( movie ) => {
             "x-rapidapi-host": "imdb-internet-movie-database-unofficial.p.rapidapi.com"
           }
         })
-        .then((data) => {
-          setState(data);
+        .then(data => data.json())
+        .then(json => {
+          setState(json);
           setIsLoading(false)
         })
         .catch((err) => {

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import useRead from '../hooks/useRead'
 
 const VotedMovies = () => {
@@ -18,7 +19,7 @@ const VotedMovies = () => {
       { movies.map((v,i) => {
         return (
           <div key={i} >
-            <p>{v.title}</p>
+            <Link to={`/movieinfo/${v.api_id}`}>{v.title}</Link>
             <p>{v.thumbs_up}</p>
             <p>{v.thumbs_down}</p>
           </div>
