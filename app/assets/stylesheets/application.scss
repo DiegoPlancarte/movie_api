@@ -13,5 +13,7 @@
  *= require_tree .
  *= require_self
  */
-
+.movie-cards {
+  padding: 25px 25px;
+}
 @import 'bootstrap.min.scss'

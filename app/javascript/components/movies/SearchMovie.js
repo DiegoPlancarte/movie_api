@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap'
 import { Redirect } from 'react-router-dom';
-import { Container } from 'react-bootstrap'
+import { Container, Row } from 'react-bootstrap'
 
 const SearchMovie = () => {
 
@@ -23,24 +23,24 @@ const SearchMovie = () => {
   return ( 
     <React.Fragment>
       <Container>
-        <Form inline>
-          <Form.Group controlId="title">
-            <Form.Label>Search</Form.Label>
-            <Form.Control 
-              type="text" 
-              name="title" 
-              value={ title.title || '' } 
-              onChange={ handleInputChange } 
-              placeholder="Enter title" />
-          </Form.Group>
-          <Button type='submit' onClick={handleSubmit}>Search</Button>
-          { redirect && (
-            <Redirect to={{ 
-              pathname: '/searchresults',
-              state: {title: title.title}
-            }} />
-          )}
-        </Form>
+          <Form>
+            <Form.Group controlId="title">
+              <Form.Label >Search Movies</Form.Label>
+              <Form.Control
+                type="text" 
+                name="title" 
+                value={ title.title || '' } 
+                onChange={ handleInputChange } 
+                placeholder="Enter title" />
+            </Form.Group>
+            <Button type='submit' onClick={handleSubmit}>Search</Button>
+            { redirect && (
+              <Redirect to={{ 
+                pathname: '/searchresults',
+                state: {title: title.title}
+              }} />
+            )}
+          </Form>
       </Container>
     </React.Fragment>
   );

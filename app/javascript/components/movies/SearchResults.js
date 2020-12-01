@@ -1,7 +1,8 @@
 import React from 'react';
-import useSearch from '../hooks/useSearch'
-import useCreate from '../hooks/useCreate'
+import useSearch from '../hooks/useSearch';
+import useCreate from '../hooks/useCreate';
 import { Link } from 'react-router-dom';
+import { Container, Row, Col, CardColumns, Card } from 'react-bootstrap';
 
 const SearchResults = (props) => {
 
@@ -16,19 +17,29 @@ const SearchResults = (props) => {
     )
   }
 
+  console.log(movies)
+
   return (
     <React.Fragment>
-      { movies.map((v,i) => {
-        return(
-          <div key={i}>
-            <img 
-              src={v.image}
-              width='250'
-            />
-            <Link to={`/movieinfo/${v.id}`}>{v.title}</Link>
-          </div>
-        )
-      })}
+      <Container>
+        <h1 className="text-primary" id="header">"{props.location.state.title}" Results:</h1>
+        <hr/>
+        <CardColumns xs={1} md={3}>
+          {movies.map((v,i)=> {
+            return (
+              <Card key={i} border="light" className="shadow">
+                <Card.Header><strong>{v.title}</strong></Card.Header>
+                <Card.Img
+                  className='img-fluid'
+                  src={v.image}
+                  />
+                <Card.Body>
+                  <Link to={`/movieinfo/${v.id}`} className='btn btn-primary' >More Info</Link>
+                </Card.Body>
+              </Card>
+          )})}
+        </CardColumns>
+      </Container>
     </React.Fragment>
   );
 }
