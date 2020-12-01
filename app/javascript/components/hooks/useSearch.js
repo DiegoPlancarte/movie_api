@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 
-const useSearch = ( movie ) => {
+const useSearch = (movie) => {
   
   const [ state, setState ] = useState([]);
-  const [ isLoading, setIsLoading ] = useState(true);
+  const [ isLoading, setIsLoading ] = useState(null);
   const [ error, setError ] = useState(null);
 
   useEffect(() => {
@@ -18,7 +18,8 @@ const useSearch = ( movie ) => {
         })
         .then(data => data.json())
         .then(json => {
-          setState(json);
+          const titles = json.titles
+          setState(titles);
           setIsLoading(false)
         })
         .catch((err) => {
