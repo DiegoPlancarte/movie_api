@@ -17,8 +17,6 @@ const SearchResults = (props) => {
     )
   }
 
-  console.log(movies)
-
   return (
     <React.Fragment>
       <Container>

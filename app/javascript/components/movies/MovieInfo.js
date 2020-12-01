@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useFilmData from '../hooks/useFilmData'
 import useRead from '../hooks/useRead'
 import useCreate from '../hooks/useCreate'
 import useUpdate from '../hooks/useUpdate'
-import { Button } from 'react-bootstrap'
+import { Container, Row, Col, Button, Tabs, Tab } from 'react-bootstrap'
 
 const MovieInfo = (props) => {
 
+  const [ key, setKey ] = useState('about')
   const [ api, setApi, apiLoading, apiError ] = useFilmData(props.match.params.id)
   const [ movies, setMovies, moviesLoading, moviesError ] = useRead(`movies/${props.match.params.id}`)
   const [ createMovie ] = useCreate('movies', props, 'allmovies')
@@ -47,19 +48,51 @@ const MovieInfo = (props) => {
 
   return ( 
     <React.Fragment>
-    <img 
-      src={api.poster}
-      width='250'
-    />
-    <p>{api.title}</p>
-    <p>{api.plot}</p>
-    <p>{api.length}</p>
-    <p>{api.rating}</p>
-    <p>{api.year}</p>
-    {exists && <p>{movie.thumbs_up}</p>}
-    {exists && <p>{movie.thumbs_down}</p>}
-    <Button onClick={handleUpVote}>Up Vote</Button>
-    <Button onClick={handleDownVote}>Down Vote</Button>
+    <Container>
+      <Row className='my-2'>
+        <Col>
+          <img 
+            src={api.poster}
+            width='250'
+          />
+        </Col>
+        <Col>
+          {exists && <p>{movie.thumbs_up}</p>}
+          <Button onClick={handleUpVote}>Up Vote</Button>
+          {exists && <p>{movie.thumbs_down}</p>}
+          <Button onClick={handleDownVote}>Down Vote</Button>
+        </Col>
+      </Row>
+      <Tabs
+        id="controlled-tab-example"
+        activeKey={key}
+        onSelect={(k) => setKey(k)}
+      >
+        <Tab eventKey='about' title='About'>
+          <p>{api.title}</p>
+          <p>{api.plot}</p>
+        </Tab>
+        <Tab eventKey='details' title='Film Details'>
+          <p>{api.length}</p>
+          <p>{api.rating}</p>
+          <p>{api.year}</p>
+        </Tab>
+        <Tab eventKey='cast' title='Cast'>
+          { api.cast && api.cast.map((v,i)=> {
+            return(
+              <p key={i}><strong>{v.character}</strong>: {v.actor}</p>
+            )
+          })}
+        </Tab>
+        <Tab eventKey='tech' title='Tech Specs'>
+          { api.technical_specs && api.technical_specs.map((v,i)=> {
+            return(
+              <p key={i}>{v.toString()}</p>
+            )
+          })}
+        </Tab>
+      </Tabs>
+    </Container>
     </React.Fragment>
   );
 }
