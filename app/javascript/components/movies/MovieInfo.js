@@ -12,10 +12,10 @@ const MovieInfo = (props) => {
   const [ key, setKey ] = useState('about')
   const [ api, setApi, apiLoading, apiError ] = useFilmData(props.match.params.id)
   const [ movies, setMovies, moviesLoading, moviesError ] = useRead(`movies/${props.match.params.id}`)
-  const [ createMovie ] = useCreate('movies', props, 'allmovies')
-  const [ updateMovie ] = useUpdate(`movies/${props.match.params.id}`, props, 'allmovies')
+  const [ createMovie ] = useCreate('movies', props, 'refresh')
+  const [ updateMovie ] = useUpdate(`movies/${props.match.params.id}`, props)
 
-  if (moviesLoading && apiLoading) {
+  if (apiLoading) {
     return (
       <div>
         <h1>Loading...</h1>
@@ -36,6 +36,8 @@ const MovieInfo = (props) => {
       createMovie({...values})
     }
   }
+
+  console.log(api)
 
   const handleDownVote = () => {
     if (exists) {
@@ -61,10 +63,10 @@ const MovieInfo = (props) => {
         <Col>
           <IconContext.Provider value={{ size: "1.5em" }}>
             <div>
-              <Button className='vote-button' onClick={handleUpVote}>
+              <Button className='vote-button btn-info' onClick={handleUpVote}>
                 <Row xs={2}>
                   <Col>
-                  {exists && <span>{movie.thumbs_up}</span>}
+                  {exists ? <span>{movie.thumbs_up}</span> : <span>Great!</span>}
                   </Col>
                   <Col>
                   <FaRegThumbsUp/>
@@ -75,10 +77,10 @@ const MovieInfo = (props) => {
           </IconContext.Provider>
           <IconContext.Provider value={{ size: "1.5em" }}>
             <div>
-              <Button className='vote-button' onClick={handleDownVote}>
+              <Button className='vote-button btn-danger' onClick={handleDownVote}>
                 <Row xs={2}>
                   <Col>
-                  {exists && <span>{movie.thumbs_down}</span>}
+                  {exists ? <span>{movie.thumbs_down}</span> : <span>Bad!</span>}
                   </Col>
                   <Col>
                   <FaRegThumbsDown/>
@@ -93,15 +95,16 @@ const MovieInfo = (props) => {
         id="controlled-tab-example"
         activeKey={key}
         onSelect={(k) => setKey(k)}
+        className='mb-4'
       >
         <Tab eventKey='about' title='About'>
-          <p>{api.title}</p>
-          <p>{api.plot}</p>
+          <p>Title: {api.title}</p>
+          <p>Description: {api.plot}</p>
         </Tab>
         <Tab eventKey='details' title='Film Details'>
-          <p>{api.length}</p>
-          <p>{api.rating}</p>
-          <p>{api.year}</p>
+          <p>Runtime: {api.length}</p>
+          <p>Rating: {api.rating} <em>(from {api.rating_votes} votes on IMDb)</em></p>
+          <p>Release Year: {api.year}</p>
         </Tab>
         <Tab eventKey='cast' title='Cast'>
           { api.cast && api.cast.map((v,i)=> {

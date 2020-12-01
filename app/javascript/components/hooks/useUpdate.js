@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const useUpdate = ( url, props, redirectTo ) => {
+const useUpdate = ( url, props ) => {
 
   const [ state, setState ] = useState(null);
   const [ isLoading, setIsLoading ] = useState(true);
@@ -24,7 +24,6 @@ const useUpdate = ( url, props, redirectTo ) => {
     })
     .then((data) => {
       setState(data);
-      props.history.push(`/${redirectTo}`)
     })
     .catch((err) => {
       setIsLoading(true)

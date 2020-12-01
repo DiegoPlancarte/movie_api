@@ -27,7 +27,7 @@ const useCreate = ( url, props, redirectTo ) => {
       if (`${redirectTo}` === 'refresh') {
         window.location.reload(false)
       }
-      // props.history.push(`/${redirectTo}`)
+      props.history.push(`/${redirectTo}`)
     })
     .catch((err) => {
       setIsLoading(true)
