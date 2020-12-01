@@ -1,10 +1,12 @@
 import React from 'react';
 import useSearch from '../hooks/useSearch'
+import useCreate from '../hooks/useCreate'
 import { Link } from 'react-router-dom';
 
 const SearchResults = (props) => {
 
   const [ movies, setMovies, moviesLoading, moviesError ] = useSearch(`${props.location.state.title}`)
+  const [ createMovie ] = useCreate('movies', props, `/movieinfo/${movies.api_id}`)
 
   if (moviesLoading) {
     return (

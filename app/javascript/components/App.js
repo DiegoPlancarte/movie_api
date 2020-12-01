@@ -7,7 +7,9 @@ import VotedMovies from "./movies/VotedMovies"
 import MovieInfo from "./movies/MovieInfo"
 import SearchResults from "./movies/SearchResults"
 
-const App = () => {
+const App = (props) => {
+
+  const { csrf_token } = props
 
   return (
     <React.Fragment>
@@ -16,7 +18,7 @@ const App = () => {
         <Switch>
           <Route exact path='/' render={(props) => <SearchMovie {...props} /> }/>
           <Route path='/allmovies' ><VotedMovies/></Route>
-          <Route path = '/movieinfo/:id' render={(props) => <MovieInfo {...props} /> }/>
+          <Route path = '/movieinfo/:id' render={(props) => <MovieInfo {...props} csrf_token={ csrf_token } /> }/>
           <Route path = '/searchresults' render={(props) => <SearchResults {...props} /> }/>
         </Switch>
       </Router>

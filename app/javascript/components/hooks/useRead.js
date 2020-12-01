@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 const useRead = ( url ) => {
   
-  const [ state, setState ] = useState([]);
+  const [ state, setState ] = useState();
   const [ isLoading, setIsLoading ] = useState(true);
   const [ error, setError ] = useState(null);
 
