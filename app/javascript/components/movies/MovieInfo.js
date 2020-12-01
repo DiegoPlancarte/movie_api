@@ -15,12 +15,15 @@ const MovieInfo = (props) => {
 
   return ( 
     <React.Fragment>
+    <img 
+      src={movie.poster}
+      width='250'
+    />
     <p>{movie.title}</p>
     <p>{movie.plot}</p>
     <p>{movie.length}</p>
     <p>{movie.rating}</p>
     <p>{movie.year}</p>
-    <p>{movie.poster}</p>
     </React.Fragment>
   );
 }

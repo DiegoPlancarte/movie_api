@@ -1,5 +1,6 @@
 import React from 'react';
 import useSearch from '../hooks/useSearch'
+import { Link } from 'react-router-dom';
 
 const SearchResults = (props) => {
 
@@ -18,9 +19,11 @@ const SearchResults = (props) => {
       { movies.map((v,i) => {
         return(
           <div key={i}>
-            <p>{v.title}</p>
-            <p>{v.id}</p>
-            <p>{v.image}</p>
+            <img 
+              src={v.image}
+              width='250'
+            />
+            <Link to={`/movieinfo/${v.id}`}>{v.title}</Link>
           </div>
         )
       })}
