@@ -6,7 +6,7 @@ import useUpdate from '../hooks/useUpdate'
 import { Container, Row, Col, Button, Tabs, Tab } from 'react-bootstrap'
 import { IconContext } from "react-icons";
 import { FaRegThumbsUp, FaRegThumbsDown } from "react-icons/fa";
-import { BiCameraMovie } from 'react-icons/bi';
+import Loading from './Loading';
 
 const MovieInfo = (props) => {
 
@@ -18,17 +18,8 @@ const MovieInfo = (props) => {
 
   if (apiLoading) {
     return (
-      <Container>
-        <div style={{textAlign: "center"}}>
-          <div>
-            <IconContext.Provider value={{ size: '5em', color: '#3498db'}}>
-              <BiCameraMovie/>
-            </IconContext.Provider>
-            <h1 className="text-info">Loading...</h1>
-          </div>
-        </div>
-      </Container>
-      )
+      <Loading />
+    )
   }
 
   const movie = movies[0]

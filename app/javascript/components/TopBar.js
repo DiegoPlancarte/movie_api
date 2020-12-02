@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Navbar, Nav } from "react-bootstrap";
 import { IconContext } from "react-icons";
 import { BiCameraMovie } from 'react-icons/bi';

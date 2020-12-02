@@ -1,28 +1,16 @@
 import React from 'react';
 import useSearch from '../hooks/useSearch';
-import useCreate from '../hooks/useCreate';
 import { Link } from 'react-router-dom';
-import { Container, Row, Col, CardColumns, Card } from 'react-bootstrap';
-import { IconContext } from "react-icons";
-import { BiCameraMovie } from 'react-icons/bi';
+import { Container, CardColumns, Card } from 'react-bootstrap';
+import Loading from './Loading';
 
 const SearchResults = (props) => {
 
   const [ movies, setMovies, moviesLoading, moviesError ] = useSearch(`${props.location.state.title}`)
-  const [ createMovie ] = useCreate('movies', props, `/movieinfo/${movies.api_id}`)
 
   if (moviesLoading) {
     return (
-      <Container>
-        <div style={{textAlign: "center"}}>
-          <div>
-            <IconContext.Provider value={{ size: '5em', color: '#3498db'}}>
-              <BiCameraMovie/>
-            </IconContext.Provider>
-            <h1 className="text-info">Loading...</h1>
-          </div>
-        </div>
-      </Container>
+      <Loading />
       )
   }
 

@@ -2,11 +2,11 @@ import React from "react"
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 //Pages
+import TopBar from "./TopBar"
 import SearchMovie from "./movies/SearchMovie"
 import VotedMovies from "./movies/VotedMovies"
 import MovieInfo from "./movies/MovieInfo"
 import SearchResults from "./movies/SearchResults"
-import TopBar from "./TopBar"
 
 const App = (props) => {
 

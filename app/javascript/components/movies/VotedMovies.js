@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import useRead from '../hooks/useRead'
 import { Table, Container } from 'react-bootstrap'
-import { IconContext } from "react-icons";
-import { BiCameraMovie } from 'react-icons/bi';
+
+import Loading from './Loading'
 
 const VotedMovies = () => {
 
@@ -11,16 +11,7 @@ const VotedMovies = () => {
 
   if (moviesLoading) {
     return (
-      <Container>
-        <div style={{textAlign: "center"}}>
-          <div>
-            <IconContext.Provider value={{ size: '5em', color: '#3498db'}}>
-              <BiCameraMovie/>
-            </IconContext.Provider>
-            <h1 className="text-info">Loading...</h1>
-          </div>
-        </div>
-      </Container>
+      <Loading />
       )
   }
 
