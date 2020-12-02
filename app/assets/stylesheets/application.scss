@@ -20,6 +20,12 @@
 .vote-button {
   width: 100px;
   margin: 20px 0 10px 0;
+  float: none;
+}
+
+.loading {
+  text-align: center;
+  padding-top: 15%;
 }
 
 @import 'bootstrap.min.scss'

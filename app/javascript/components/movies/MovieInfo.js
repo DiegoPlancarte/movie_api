@@ -36,8 +36,6 @@ const MovieInfo = (props) => {
     }
   }
 
-  console.log(api)
-
   const handleDownVote = () => {
     if (exists) {
       const number = movie.thumbs_down++
@@ -52,20 +50,21 @@ const MovieInfo = (props) => {
   return ( 
     <React.Fragment>
     <Container>
-      <Row className='my-2'>
-        <Col>
-          <img 
+      <Row className='my-2 justify-content-between'>
+        <Col md={5}>
+          <img
+            alt={`Poster image for ${api.title}`}
             src={api.poster}
             width='250'
           />
         </Col>
-        <Col>
+        <Col md={5}>
           <IconContext.Provider value={{ size: "1.5em" }}>
             <div>
               <Button className='vote-button btn-info' onClick={handleUpVote}>
                 <Row xs={2}>
                   <Col>
-                  {exists ? <span>{movie.thumbs_up}</span> : <span>Great!</span>}
+                  {exists ? <>{movie.thumbs_up}</> : <>Great!</>}
                   </Col>
                   <Col>
                   <FaRegThumbsUp/>
@@ -79,7 +78,7 @@ const MovieInfo = (props) => {
               <Button className='vote-button btn-danger' onClick={handleDownVote}>
                 <Row xs={2}>
                   <Col>
-                  {exists ? <span>{movie.thumbs_down}</span> : <span>Bad!</span>}
+                  {exists ? <>{movie.thumbs_down}</> : <>Bad!</>}
                   </Col>
                   <Col>
                   <FaRegThumbsDown/>

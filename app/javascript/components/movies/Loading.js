@@ -7,7 +7,7 @@ const Loading = () => {
   return (
     <React.Fragment>
       <Container>
-        <div style={{textAlign: "center"}}>
+        <div className='my-auto loading'>
           <div>
             <IconContext.Provider value={{ size: '5em', color: '#3498db'}}>
               <BiCameraMovie/>

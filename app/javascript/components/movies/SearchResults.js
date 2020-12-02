@@ -25,6 +25,7 @@ const SearchResults = (props) => {
               <Card key={i} border="light" className="shadow">
                 <Card.Header><strong>{v.title}</strong></Card.Header>
                 <Card.Img
+                  alt={`Poster image for ${v.title}`}
                   className='img-fluid'
                   src={v.image}
                   />
