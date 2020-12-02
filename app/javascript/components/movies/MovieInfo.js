@@ -11,6 +11,7 @@ import Loading from './Loading';
 const MovieInfo = (props) => {
 
   const [ key, setKey ] = useState('about')
+  const [ voted, setVoted ] = useState(false)
   const [ api, setApi, apiLoading, apiError ] = useFilmData(props.match.params.id)
   const [ movies, setMovies, moviesLoading, moviesError ] = useRead(`movies/${props.match.params.id}`)
   const [ createMovie ] = useCreate('movies', props, 'refresh')
@@ -34,6 +35,7 @@ const MovieInfo = (props) => {
       const values = { title: api.title, thumbs_up: 1, thumbs_down: 0, api_id: api.id }
       createMovie({...values})
     }
+    setVoted(true)
   }
 
   const handleDownVote = () => {
@@ -45,6 +47,7 @@ const MovieInfo = (props) => {
       const values = { title: api.title, thumbs_up: 0, thumbs_down: 1, api_id: api.id }
       createMovie({...values})
     }
+    setVoted(true)
   }
 
   return ( 
@@ -58,7 +61,9 @@ const MovieInfo = (props) => {
             width='250'
           />
         </Col>
-        <Col md={5}>
+        { voted 
+        ? <p className='text-muted'>Your vote has been counted!</p>
+        : <Col md={5}>
           <IconContext.Provider value={{ size: "1.5em" }}>
             <div>
               <Button className='vote-button btn-info' onClick={handleUpVote}>
@@ -88,6 +93,7 @@ const MovieInfo = (props) => {
             </div>
           </IconContext.Provider>
         </Col>
+        }
       </Row>
       <Tabs
         id="controlled-tab-example"
