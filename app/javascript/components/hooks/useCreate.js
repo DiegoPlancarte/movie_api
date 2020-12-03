@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const useCreate = ( url, props, redirectTo ) => {
+const useCreate = ( url, props ) => {
 
   const [ state, setState ] = useState(null);
   const [ isLoading, setIsLoading ] = useState(true);
@@ -24,10 +24,6 @@ const useCreate = ( url, props, redirectTo ) => {
     })
     .then((data) => {
       setState(data);
-      if (`${redirectTo}` === 'refresh') {
-        window.location.reload(false)
-      }
-      props.history.push(`/${redirectTo}`)
     })
     .catch((err) => {
       setIsLoading(true)

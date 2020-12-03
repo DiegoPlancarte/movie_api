@@ -93,24 +93,12 @@ const MovieInfo = (props) => {
           />
         </Col>
         <Col md={5}>
-        { voted 
-        ?  <>
-            <Button className='vote-button btn-info' disabled onClick={handleUpVote}>
-              { upButton() }
-            </Button>
-            <Button className='vote-button btn-danger' disabled onClick={handleDownVote}>
-              { downButton() }
-            </Button>
-            </>
-        : <>
-            <Button className='vote-button btn-info' onClick={handleUpVote}>
-              { upButton() }
-            </Button>
-            <Button className='vote-button btn-danger' onClick={handleDownVote}>
-              { downButton() }
-            </Button>
-          </>
-        }
+          <Button className='vote-button btn-info' disabled={voted} onClick={handleUpVote}>
+            { upButton() }
+          </Button>
+          <Button className='vote-button btn-danger' disabled={voted} onClick={handleDownVote}>
+            { downButton() }
+          </Button>
           </Col>
       </Row>
       <Tabs
