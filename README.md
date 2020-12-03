@@ -15,7 +15,7 @@ This project is a movie look-up website powered by the IMDb API.
 Search for any movie by title, receive a list of movies that match your search.
 ![gif of search function](https://github.com/DiegoPlancarte/movie_api/blob/main/app/assets/images/search.gif "search")
 
-Choose one of the options and view details for the fild, such as: Plot, Cast, Year released, etc.
+Choose one of the options and view details for the film, such as: Plot, Cast, Year released, etc.
 ![gif of looking through movie info](https://github.com/DiegoPlancarte/movie_api/blob/main/app/assets/images/info.gif "info")
 
 Vote on the movie! Let us know if you liked it or disliked it. See a table of movies that have been voted on by our users.
