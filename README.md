@@ -2,9 +2,9 @@
 
 ## Table of Contents
 * [General Info](https://github.com/DiegoPlancarte/movie_api/blob/main/README.md#general-info)
+* [Usage](https://github.com/DiegoPlancarte/movie_api/blob/main/README.md#usage)
 * [Technologies](https://github.com/DiegoPlancarte/movie_api/blob/main/README.md#technologies)
 * [Setup](https://github.com/DiegoPlancarte/movie_api/blob/main/README.md#setup)
-* [Usage](https://github.com/DiegoPlancarte/movie_api/blob/main/README.md#usage)
 
 [General Info]: (https://github.com/DiegoPlancarte/movie_api/blob/main/README.md#general-info)
 
