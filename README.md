@@ -1,24 +1,45 @@
-# README
+# Movie Look-Up
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Table of Contents
+* [General Info] (#general-info)
+* [Technologies] (#technologies)
+* [Setup] (#setup)
+* [Usage] (#usage)
 
-Things you may want to cover:
+## General Info
+This project is a movie look-up website powered by the IMDb API.
 
-* Ruby version
+## Usage
+Search for any movie by title, receive a list of movies that match your search.
+Choose one of the options and view details for the fild, such as: Plot, Cast, Year released, etc.
+Vote on the movie! Let us know if you liked it or disliked it.
+See a table of movies that have been voted on by our users.
 
-* System dependencies
+## Technologies
+Project was created with:
+* Ruby 2.7.2
+* Rails 6.0.3
+* React 17.0.1
+* IMDb API
+* React-Rails 2.6
+* Bootstrap 4.5
+* DotENV-rails 2.7
 
-* Configuration
+## Setup
+To run this project, install locally and run:
 
-* Database creation
+To install dependecies:
+```
+bundle install
+```
 
-* Database initialization
+To setup database:
+```
+db:create
+db:migrate
+```
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+To start the app:
+```
+rails s
+```
