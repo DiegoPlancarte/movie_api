@@ -1,10 +1,12 @@
 # Movie Look-Up
 
 ## Table of Contents
-* [General Info] (#general-info)
-* [Technologies] (#technologies)
-* [Setup] (#setup)
-* [Usage] (#usage)
+* [General Info](https://github.com/DiegoPlancarte/movie_api/blob/main/README.md#general-info)
+* [Technologies](https://github.com/DiegoPlancarte/movie_api/blob/main/README.md#technologies)
+* [Setup](https://github.com/DiegoPlancarte/movie_api/blob/main/README.md#setup)
+* [Usage](https://github.com/DiegoPlancarte/movie_api/blob/main/README.md#usage)
+
+[General Info]: (https://github.com/DiegoPlancarte/movie_api/blob/main/README.md#general-info)
 
 ## General Info
 This project is a movie look-up website powered by the IMDb API.
