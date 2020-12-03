@@ -9,7 +9,7 @@
 [General Info]: (https://github.com/DiegoPlancarte/movie_api/blob/main/README.md#general-info)
 
 ## General Info
-This project is a movie look-up website powered by the IMDb API.
+This project is a movie look-up website powered by the IMDb API. Completely responsive! Ready to use across all devices!
 
 ## Usage
 Search for any movie by title, receive a list of movies that match your search.
