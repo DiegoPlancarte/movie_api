@@ -50,9 +50,40 @@ const MovieInfo = (props) => {
     setVoted(true)
   }
 
+  const upButton = () => {
+    return (
+      <Row xs={2}>
+        <Col>
+          {exists ? <>{movie.thumbs_up}</> : <>Great!</>}
+        </Col>
+        <Col>
+          <IconContext.Provider value={{ size: "1.5em" }}>
+            <FaRegThumbsUp/>
+          </IconContext.Provider>
+        </Col>
+      </Row>
+    )
+  }
+
+  const downButton = () => {
+    return (
+      <Row xs={2}>
+        <Col>
+          {exists ? <>{movie.thumbs_down}</> : <>Bad!</>}
+        </Col>
+        <Col>
+          <IconContext.Provider value={{ size: "1.5em" }}>
+            <FaRegThumbsDown/>
+          </IconContext.Provider>
+        </Col>
+      </Row>
+    )
+  }
+
   return ( 
     <React.Fragment>
     <Container>
+      { voted && <p className='text-muted text-center'>Your vote has been counted!</p>}
       <Row className='my-2 justify-content-between'>
         <Col md={5}>
           <img
@@ -61,39 +92,26 @@ const MovieInfo = (props) => {
             width='250'
           />
         </Col>
+        <Col md={5}>
         { voted 
-        ? <p className='text-muted'>Your vote has been counted!</p>
-        : <Col md={5}>
-          <IconContext.Provider value={{ size: "1.5em" }}>
-            <div>
-              <Button className='vote-button btn-info' onClick={handleUpVote}>
-                <Row xs={2}>
-                  <Col>
-                  {exists ? <>{movie.thumbs_up}</> : <>Great!</>}
-                  </Col>
-                  <Col>
-                  <FaRegThumbsUp/>
-                  </Col>
-                </Row>
-              </Button>
-            </div>
-          </IconContext.Provider>
-          <IconContext.Provider value={{ size: "1.5em" }}>
-            <div>
-              <Button className='vote-button btn-danger' onClick={handleDownVote}>
-                <Row xs={2}>
-                  <Col>
-                  {exists ? <>{movie.thumbs_down}</> : <>Bad!</>}
-                  </Col>
-                  <Col>
-                  <FaRegThumbsDown/>
-                  </Col>
-                </Row>
-              </Button>
-            </div>
-          </IconContext.Provider>
-        </Col>
+        ?  <>
+            <Button className='vote-button btn-info' disabled onClick={handleUpVote}>
+              { upButton() }
+            </Button>
+            <Button className='vote-button btn-danger' disabled onClick={handleDownVote}>
+              { downButton() }
+            </Button>
+            </>
+        : <>
+            <Button className='vote-button btn-info' onClick={handleUpVote}>
+              { upButton() }
+            </Button>
+            <Button className='vote-button btn-danger' onClick={handleDownVote}>
+              { downButton() }
+            </Button>
+          </>
         }
+          </Col>
       </Row>
       <Tabs
         id="controlled-tab-example"
